@@ -1,0 +1,41 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.5.3/schema.json",
+	"organizeImports": {
+		"enabled": true
+	},
+	"formatter": {
+		"enabled": true
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"all": true,
+			"style": {
+				"noDefaultExport": "off"
+			},
+			"nursery": {
+				"noNodejsModules": "off"
+			}
+		}
+	},
+	"json": {
+		"parser": {
+			"allowComments": true
+		},
+		"formatter": {
+			"enabled": true
+		}
+	},
+	"files": {
+		"ignore": [
+			"**/dist/**",
+			"**/node_modules/**",
+			"packages/biome-custom-rules/**"
+		]
+	},
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	}
+}

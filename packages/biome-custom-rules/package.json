@@ -1,19 +1,27 @@
 {
-  "name": "api",
+  "name": "@local/biome-custom-rules",
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
-    "dev": "tsc-watch --onSuccess \"node ./dist/index.js\"",
-    "build": "tsc -b",
-    "clean": "rm -rf node_modules dist",
+    "build": "tsc",
+    "clean": "rm -rf dist",
     "format": "biome format --write .",
     "lint": "biome lint .",
     "lint:fix": "biome check --apply .",
     "ci:check": "biome ci ."
   },
   "devDependencies": {
+    "@biomejs/biome": "1.5.3",
     "@types/node": "^20.11.30",
     "typescript": "~5.6.2"
   }
-}
+} 

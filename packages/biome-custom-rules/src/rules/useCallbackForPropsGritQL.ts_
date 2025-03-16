@@ -1,0 +1,115 @@
+// NOTE: This is a speculative implementation based on early GritQL announcements
+// The actual syntax and API will likely be different when Biome 2.0 is released
+
+import type { GritQLRule } from '@biomejs/gritql'; // hypothetical import
+
+export const useCallbackRule: GritQLRule = {
+  name: 'useCallbackForProps',
+  description: 'Enforce using useCallback for function props in React components',
+  severity: 'error',
+  
+  // GritQL query to find violations
+  query: `
+    // Find all JSX attributes that start with "on"
+    MATCH (attr:JSXAttribute)
+    WHERE attr.name STARTS WITH "on"
+    
+    // Look for arrow functions or function expressions as values
+    AND (attr)-[:HAS_VALUE]->(expr)
+    WHERE expr.type IN ["ArrowFunctionExpression", "FunctionExpression"]
+    
+    // Make sure we're in a React component (function or arrow function)
+    AND (attr)-[:INSIDE*]->(component)
+    WHERE component.type IN ["FunctionDeclaration", "ArrowFunctionExpression"]
+    AND component.returnType CONTAINS "JSX"
+    
+    // Check that the function is NOT wrapped in useCallback
+    AND NOT (
+      (expr)-[:INSIDE]->(call)
+      WHERE call.type = "CallExpression"
+      AND call-[:CALLEE]->(:Identifier { name: "useCallback" })
+    )
+    
+    RETURN attr
+  `,
+
+  // Message template for the error
+  message: "Function prop '{{propName}}' should be wrapped in useCallback",
+
+  // Function to extract data for the message template
+  messageData: (node) => ({
+    propName: node.name,
+  }),
+
+  // Optional: Provide an automatic fix
+  fix: `
+    // Wrap the function in useCallback
+    MATCH (func) WHERE func = $violatingNode
+    WRAP func IN "useCallback($1, [])"
+    
+    // Add useCallback import if not present
+    ENSURE IMPORT { useCallback } from "react"
+  `,
+
+  // Examples for documentation and testing
+  examples: {
+    valid: [
+      {
+        code: `
+          function MyComponent() {
+            const handleClick = useCallback(() => {
+              console.log('clicked');
+            }, []);
+            
+            return <button onClick={handleClick}>Click me</button>;
+          }
+        `,
+        description: 'Function prop wrapped in useCallback',
+      },
+    ],
+    invalid: [
+      {
+        code: `
+          function MyComponent() {
+            return <button onClick={() => console.log('clicked')}>
+              Click me
+            </button>;
+          }
+        `,
+        description: 'Inline function prop not wrapped in useCallback',
+        errors: [
+          {
+            message: "Function prop 'onClick' should be wrapped in useCallback",
+            line: 2,
+            column: 27,
+          },
+        ],
+      },
+    ],
+  },
+
+  // Metadata for documentation
+  docs: {
+    description: 'Enforces the use of useCallback for function props to prevent unnecessary re-renders.',
+    category: 'Performance',
+    recommended: true,
+    url: 'https://your-docs-url/rules/use-callback-for-props',
+    examples: [
+      {
+        description: 'Why this rule is important',
+        code: `
+          // ❌ Bad: Creates new function on every render
+          <Button onClick={() => handleClick()} />
+
+          // ✅ Good: Memoized function reference
+          const handleClick = useCallback(() => {
+            // handle click
+          }, []);
+          <Button onClick={handleClick} />
+        `,
+      },
+    ],
+  },
+};
+
+export default useCallbackRule; 

@@ -1,5 +1,5 @@
-export interface IMyFun {
-  fun1(x: string): void;
+export interface MyFunction {
+	fun1(x: string): void;
 }
 
 // function mydecorator(value: string) {
@@ -26,39 +26,39 @@ export interface IMyFun {
 type SimpleFn = () => void;
 
 function logMethod() {
-  return function loggedMethod(
-    originalMethod: SimpleFn,
-    context: ClassMethodDecoratorContext<unknown, SimpleFn>,
-  ) {
-    console.log('!!!logMethod', context);
-    return function replacementMethod(this: undefined) {
-      console.log('LOG: Entering method.');
-      originalMethod.call(this);
-      console.log('LOG: Exiting method.');
-    };
-  };
+	return (
+		originalMethod: SimpleFn,
+		context: ClassMethodDecoratorContext<unknown, SimpleFn>,
+	) => {
+		console.info("Method decorator applied", context);
+		return function replacementMethod(this: undefined) {
+			console.info("Entering method");
+			originalMethod.call(this);
+			console.info("Exiting method");
+		};
+	};
 }
 
 export class Person {
-  name: string;
-  constructor(name: string) {
-    this.name = name;
-  }
+	name: string;
+	constructor(name: string) {
+		this.name = name;
+	}
 
-  @logMethod()
-  greet() {
-    console.log(`Hello, my name is ${this.name}.`);
-  }
+	@logMethod()
+	greet() {
+		console.info(`Hello, my name is ${this.name}.`);
+	}
 }
-const p = new Person('Ron');
+const p = new Person("Ron");
 p.greet();
 
 export function testFun(): number {
-  let x;
-  return (x = 11), 2, x;
+	const x = 11;
+	return x;
 }
 
-console.log('Module is loaded');
+console.info("Module is loaded");
 
 // const formatMetadataKey = Symbol("format");
 // function format(formatString: string) {
@@ -83,12 +83,12 @@ console.log('Module is loaded');
 //   }
 // }
 
-export const greet = (name: string) => {
-  const result = `Hello, ${name}! Welcome to the About Page.`;
-  console.log(result);
-  return result;
+export const greet = (name: string): string => {
+	const result = `Hello, ${name}! Welcome to the About Page.`;
+	console.info(result);
+	return result;
 };
 
 export const getInfo = () => {
-  return 'This is some information from the About module.';
+	return "This is some information from the About module.";
 };

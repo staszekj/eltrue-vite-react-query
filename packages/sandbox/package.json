@@ -1,30 +1,19 @@
 {
   "name": "sandbox",
   "version": "1.0.0",
-  "main": "index.js",
-  "types": "dist/index.d.ts",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "build": "tsc",
-    "lint": "eslint src/**",
-    "lint:fix": "eslint src/** --fix",
+    "dev": "tsc-watch --onSuccess \"node ./dist/index.js\"",
+    "build": "tsc -b",
     "clean": "rm -rf node_modules dist",
-    "dev": "tsc-watch --noClear --onSuccess \"echo Build successful\"",
-    "run": "tsc && node --inspect dist/src/index.js"
+    "format": "biome format --write .",
+    "lint": "biome lint .",
+    "lint:fix": "biome check --apply .",
+    "ci:check": "biome ci ."
   },
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.13.0",
-    "@typescript-eslint/parser": "^8.13.0",
-    "eslint": "^9.20.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-prettier": "^5.2.1",
-    "prettier": "^3.3.3",
-    "tsc-watch": "^6.2.0",
-    "typescript": "^5.7.2"
-  },
-  "dependencies": {
-    "reflect-metadata": "^0.2.2"
+    "@types/node": "^20.11.30",
+    "typescript": "~5.6.2"
   }
 }

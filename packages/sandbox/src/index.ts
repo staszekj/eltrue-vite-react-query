@@ -1,4 +1,4 @@
-export * from './myFunctions';
+export * from "./myFunctions";
 // import { MyFun } from './myFunctions';
 
 // function test() {

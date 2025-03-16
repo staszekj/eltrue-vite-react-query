@@ -1,7 +1,5 @@
-import React from "react";
+import type { FunctionComponent } from "react";
 
-const App: React.FunctionComponent = () => {
-  return <div>ok</div>;
+export const App2: FunctionComponent = () => {
+	return <div>ok</div>;
 };
-
-export default App;

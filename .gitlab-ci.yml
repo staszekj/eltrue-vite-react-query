@@ -1,0 +1,46 @@
+image: node:20
+
+cache:
+  paths:
+    - node_modules/
+    - .npm/
+
+stages:
+  - lint
+  - test
+  - build
+
+# Install dependencies
+.setup:
+  before_script:
+    - npm ci
+
+# Biome checks
+code-quality:
+  extends: .setup
+  stage: lint
+  script:
+    - npm run ci:check
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+# TypeScript type checking
+type-check:
+  extends: .setup
+  stage: test
+  script:
+    - npm run build
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+
+# Build check
+build:
+  extends: .setup
+  stage: build
+  script:
+    - npm run build
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH 
