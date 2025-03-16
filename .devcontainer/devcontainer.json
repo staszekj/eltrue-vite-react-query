@@ -15,7 +15,7 @@
 	"appPort": ["5173:5173"],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "yarn install",
+	// "postCreateCommand": "npm install",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
