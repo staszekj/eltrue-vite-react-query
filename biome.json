@@ -23,7 +23,8 @@
 			"allowComments": true
 		},
 		"formatter": {
-			"enabled": true
+			"enabled": true,
+			"trailingComma": "all"
 		}
 	},
 	"files": {
