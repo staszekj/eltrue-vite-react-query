@@ -2,8 +2,8 @@ import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Item } from "api/src/types";
-import type { Request, Response } from "express";
 import express from "express";
+import type { Request, Response } from "express";
 
 const app = express();
 const PORT = process.env.PORT ? Number.parseInt(process.env.PORT, 10) : 3000;
@@ -21,7 +21,6 @@ app.get("/api/search", (req: Request, res: Response) => {
 	const results = data.filter((item) => {
 		return item.name.toLowerCase().includes(query);
 	});
-
 	setTimeout(() => {
 		res.json(results);
 	}, 2000);

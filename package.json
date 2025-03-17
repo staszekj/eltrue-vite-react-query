@@ -10,7 +10,7 @@
 		"clean-tar-base64": "npm run clean-all && npm run tar && npm run base64",
 		"format": "biome format --write .",
 		"lint": "biome lint .",
-		"lint:fix": "biome check --apply .",
+		"lint:fix": "biome check --write .",
 		"ci:check": "biome ci ."
 	},
 	"workspaces": [
