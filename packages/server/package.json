@@ -1,24 +1,24 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "dev": "tsc-watch --onSuccess \"node ./dist/server.js\"",
-    "build": "tsc -b",
-    "clean": "rm -rf node_modules dist",
-    "format": "biome format --write .",
-    "lint": "biome lint .",
-    "lint:fix": "biome check --apply .",
-    "ci:check": "biome ci ."
-  },
-  "dependencies": {
-    "api": "*",
-    "express": "^4.19.1"
-  },
-  "devDependencies": {
-    "@types/express": "^4.17.21",
-    "@types/node": "^20.11.30",
-    "typescript": "~5.6.2"
-  }
+	"name": "server",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "tsc-watch --onSuccess \"node ./dist/server.js\"",
+		"build": "tsc -b",
+		"clean": "rm -rf node_modules dist",
+		"format": "biome format --write .",
+		"lint": "biome lint .",
+		"lint:fix": "biome check --apply .",
+		"ci:check": "biome ci ."
+	},
+	"dependencies": {
+		"api": "*",
+		"express": "^4.19.1"
+	},
+	"devDependencies": {
+		"@types/express": "^4.17.21",
+		"@types/node": "^20.11.30",
+		"typescript": "~5.6.2"
+	}
 }

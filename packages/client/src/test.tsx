@@ -1,34 +1,32 @@
-import type { Item } from "api";
-import { type FC, type KeyboardEvent, useCallback } from "react";
+import type { Item } from "api/src/types";
+import type React from "react";
 
-interface Props {
+interface TestProps {
 	items: Item[];
 	onSelect: (item: Item) => void;
 }
 
-export const TestComponent: FC<Props> = ({ items, onSelect }) => {
-	const handleKeyDown = useCallback(
-		(item: Item) => (event: KeyboardEvent<HTMLDivElement>) => {
+export function Test({ items, onSelect }: TestProps) {
+	const handleKeyDown =
+		(item: Item) => (event: React.KeyboardEvent<HTMLButtonElement>) => {
 			if (event.key === "Enter" || event.key === " ") {
+				event.preventDefault();
 				onSelect(item);
 			}
-		},
-		[onSelect],
-	);
+		};
 
 	return (
 		<div>
 			{items.map((item) => (
-				<div
+				<button
 					key={item.id}
-					role="button"
-					tabIndex={0}
+					type="button"
 					onClick={() => onSelect(item)}
 					onKeyDown={handleKeyDown(item)}
 				>
 					{item.name}
-				</div>
+				</button>
 			))}
 		</div>
 	);
-};
+}

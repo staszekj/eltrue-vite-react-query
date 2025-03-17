@@ -1,29 +1,29 @@
 {
-  "name": "eltrue-vite-react-query",
-  "private": true,
-  "scripts": {
-    "clean": "rm -rf node_modules dist monorepo.tar.gz*",
-    "clean-all": "npm run clean --workspace=* && npm run clean",
-    "dev": "concurrently --kill-others-on-fail --names \"API,SERVER,CLIENT\" \"npm run dev --workspace=api\" \"npm run dev --workspace=server\" \"npm run dev --workspace=client\"",
-    "tar": "tar -czf monorepo.tar.gz --exclude=\"node_modules\" --exclude=\"dist\" --exclude=\".git\" .",
-    "base64": "base64 -i monorepo.tar.gz -o monorepo.tar.gz.b64",
-    "clean-tar-base64": "npm run clean-all && npm run tar && npm run base64",
-    "format": "biome format --write .",
-    "lint": "biome lint .",
-    "lint:fix": "biome check --apply .",
-    "ci:check": "biome ci ."
-  },
-  "workspaces": [
-    "packages/sandbox",
-    "packages/api",
-    "packages/client",
-    "packages/server",
-    "packages/biome-custom-rules"
-  ],
-  "devDependencies": {
-    "@biomejs/biome": "1.5.3",
-    "concurrently": "^9.1.0",
-    "tsc-watch": "^6.2.0",
-    "zip-cli": "^0.0.0"
-  }
+	"name": "eltrue-vite-react-query",
+	"private": true,
+	"scripts": {
+		"clean": "rm -rf node_modules dist monorepo.tar.gz*",
+		"clean-all": "npm run clean --workspace=* && npm run clean",
+		"dev": "concurrently --kill-others-on-fail --names \"API,SERVER,CLIENT\" \"npm run dev --workspace=api\" \"npm run dev --workspace=server\" \"npm run dev --workspace=client\"",
+		"tar": "tar -czf monorepo.tar.gz --exclude=\"node_modules\" --exclude=\"dist\" --exclude=\".git\" .",
+		"base64": "base64 -i monorepo.tar.gz -o monorepo.tar.gz.b64",
+		"clean-tar-base64": "npm run clean-all && npm run tar && npm run base64",
+		"format": "biome format --write .",
+		"lint": "biome lint .",
+		"lint:fix": "biome check --apply .",
+		"ci:check": "biome ci ."
+	},
+	"workspaces": [
+		"packages/sandbox",
+		"packages/api",
+		"packages/client",
+		"packages/server",
+		"packages/biome-custom-rules"
+	],
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"concurrently": "^9.1.0",
+		"tsc-watch": "^6.2.0",
+		"zip-cli": "^0.0.0"
+	}
 }

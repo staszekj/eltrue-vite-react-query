@@ -1,9 +1,9 @@
-import type { Item } from "api/src/types";
-import type { Request, Response } from "express";
-import express from "express";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import type { Item } from "api/src/types";
+import type { Request, Response } from "express";
+import express from "express";
 
 const app = express();
 const PORT = process.env.PORT ? Number.parseInt(process.env.PORT, 10) : 3000;

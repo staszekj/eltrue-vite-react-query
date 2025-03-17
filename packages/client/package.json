@@ -1,31 +1,31 @@
 {
-  "name": "client",
-  "private": true,
-  "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview",
-    "clean": "rm -rf node_modules dist",
-    "format": "biome format --write .",
-    "lint": "biome lint .",
-    "lint:fix": "biome check --apply .",
-    "ci:check": "biome ci ."
-  },
-  "dependencies": {
-    "@tanstack/react-query": "4",
-    "@tanstack/react-query-devtools": "4",
-    "api": "*",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "sandbox": "*"
-  },
-  "devDependencies": {
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "@vitejs/plugin-react": "^4.3.3",
-    "typescript": "~5.6.2",
-    "vite": "^5.4.10"
-  }
+	"name": "client",
+	"private": true,
+	"version": "1.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc -b && vite build",
+		"preview": "vite preview",
+		"clean": "rm -rf node_modules dist",
+		"format": "biome format --write .",
+		"lint": "biome lint .",
+		"lint:fix": "biome check --apply .",
+		"ci:check": "biome ci ."
+	},
+	"dependencies": {
+		"@tanstack/react-query": "4",
+		"@tanstack/react-query-devtools": "4",
+		"api": "*",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"sandbox": "*"
+	},
+	"devDependencies": {
+		"@types/react": "^18.3.12",
+		"@types/react-dom": "^18.3.1",
+		"@vitejs/plugin-react": "^4.3.3",
+		"typescript": "~5.6.2",
+		"vite": "^5.4.10"
+	}
 }

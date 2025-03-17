@@ -1,20 +1,20 @@
 {
-  "name": "@local/biome-use-callback-rule",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "main": "dist/index.js",
-  "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "clean": "rm -rf dist",
-    "format": "biome format --write .",
-    "lint": "biome lint .",
-    "lint:fix": "biome check --apply .",
-    "ci:check": "biome ci ."
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@types/node": "^20.11.28",
-    "typescript": "^5.4.2"
-  }
-} 
+	"name": "@local/biome-use-callback-rule",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"main": "dist/index.js",
+	"scripts": {
+		"build": "tsc -p tsconfig.json",
+		"clean": "rm -rf dist",
+		"format": "biome format --write .",
+		"lint": "biome lint .",
+		"lint:fix": "biome check --apply .",
+		"ci:check": "biome ci ."
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@types/node": "^20.11.28",
+		"typescript": "^5.4.2"
+	}
+}

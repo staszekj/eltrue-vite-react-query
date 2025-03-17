@@ -1,4 +1,4 @@
-export * from "./myFunctions";
+export { MyFun } from "./myFunctions.ts";
 // import { MyFun } from './myFunctions';
 
 // function test() {

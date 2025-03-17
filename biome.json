@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.5.3/schema.json",
+	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
 	"organizeImports": {
 		"enabled": true
 	},
@@ -13,8 +13,12 @@
 			"style": {
 				"noDefaultExport": "off"
 			},
-			"nursery": {
-				"noNodejsModules": "off"
+			"suspicious": {
+				"noConsole": "off"
+			},
+			"correctness": {
+				"noNodejsModules": "off",
+				"noUndeclaredDependencies": "off"
 			}
 		}
 	},
@@ -23,8 +27,7 @@
 			"allowComments": true
 		},
 		"formatter": {
-			"enabled": true,
-			"trailingComma": "all"
+			"enabled": true
 		}
 	},
 	"files": {
