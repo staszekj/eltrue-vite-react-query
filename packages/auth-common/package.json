@@ -1,0 +1,24 @@
+{
+	"name": "@eltrue/auth-common",
+	"version": "1.0.0",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"build": "tsc",
+		"dev": "tsc -w",
+		"clean": "rm -rf dist"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"@azure/msal-browser": "^3.28.1",
+		"@azure/msal-node": "^2.1.0"
+	},
+	"devDependencies": {
+		"@types/jest": "^29.5.14",
+		"@types/jsonwebtoken": "^9.0.9",
+		"typescript": "^5.3.3"
+	}
+}

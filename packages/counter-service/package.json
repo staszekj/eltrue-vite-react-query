@@ -1,0 +1,25 @@
+{
+	"name": "counter-service",
+	"version": "1.0.0",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"build": "tsc",
+		"test": "ts-node src/test.ts"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"@azure/msal-node": "^2.0.0",
+		"jsonwebtoken": "^9.0.0",
+		"value-service": "file:../value-service"
+	},
+	"devDependencies": {
+		"@types/jsonwebtoken": "^9.0.0",
+		"@types/node": "^20.0.0",
+		"ts-node": "^10.9.0",
+		"typescript": "^5.0.0"
+	}
+}
