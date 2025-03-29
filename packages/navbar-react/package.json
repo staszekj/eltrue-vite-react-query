@@ -1,0 +1,25 @@
+{
+	"name": "@eltrue/navbar-react",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc && vite build",
+		"lint": "biome lint .",
+		"lint:fix": "biome check --write .",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"devDependencies": {
+		"@originjs/vite-plugin-federation": "^1.4.0",
+		"@types/react": "^18.2.55",
+		"@types/react-dom": "^18.2.19",
+		"@vitejs/plugin-react": "^4.2.1",
+		"typescript": "^5.3.3",
+		"vite": "^5.1.3"
+	}
+}
