@@ -14,3 +14,11 @@ declare namespace jsx {
 		>;
 	}
 }
+
+declare namespace jsx {
+	type IntrinsicElements = {};
+}
+
+declare namespace jsx {
+	type IntrinsicElements = {};
+}

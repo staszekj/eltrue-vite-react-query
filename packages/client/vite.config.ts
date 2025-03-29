@@ -8,10 +8,7 @@ export default defineConfig({
 		react(),
 		federation({
 			name: "client",
-			remotes: {
-				navbarReact: "http://localhost:3001/assets/remoteEntry.js",
-				navbarWebComponent: "http://localhost:3002/assets/remoteEntry.js",
-			},
+			remotes: {},
 			shared: ["react", "react-dom"],
 		}),
 	],
